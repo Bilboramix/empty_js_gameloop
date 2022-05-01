@@ -21,7 +21,7 @@ export const UPDATEGAME = (_dt) => {
   }
 };
 
-/* CTX is global here. For some reason you will have to make it local but you've got to pass it here */
+/* CTX is global here. For some reason, to deploy on your website, you may have to make it local so pass it here */
 export const DRAWGAME = (/* _ctx */) => {
   /* This loop draw all the entities */
   for (let i = 0; i < entities.length; i++) {
