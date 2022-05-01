@@ -10,15 +10,17 @@ This is an easy'n'ready to use 2D canvas boilerplate, great for begginer or to m
 
 ## How to use
 
-1.  Clone it : git clone https://github.com/Bilboramix/empty_js_gameloop.git
+1.  Clone it :
 
-2.  Start : open webserver with a live server extension
+```console
+git clone https://github.com/Bilboramix/empty_js_gameloop.git
+```
 
-- All the code is commented, make sure to understand the loop flow and try to make something
+2.  Start : open webserver with a live server extension and use ZQSD/WASD to move the player.
 
-3.  Imagine :
+3.  Code : Create classes objects, with their own update and draw function (Follow the player model), and push a new one into entities array.
 
-- Create an object into classes folder, like Ennemy.js
-- Add "this.health = 100" to Player.js
-- Calculate collision by creating a Player method
-- Call your method in the Player.update() one.
+## Cool canvas tutorials here
+
+- Frank's laboratory : https://www.youtube.com/c/Frankslaboratory
+- Chris Courses : https://www.youtube.com/c/ChrisCourses
