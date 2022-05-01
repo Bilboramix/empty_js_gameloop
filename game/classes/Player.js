@@ -7,14 +7,20 @@ export default class Player {
     this.color = "#ff0000";
   }
 
-  draw() {
-    drawRectangle(this.x, this.y, this.width, this.height, this.color);
-  }
-
+  /* 
+  Entities have their own update and draw methods to be able to loop on them
+  You can create some specific behaviors with an Entity class and inheritance 
+  */
   update(_dt, _inputs) {
     this.move(_dt, _inputs);
   }
 
+  draw() {
+    drawRectangle(this.x, this.y, this.width, this.height, this.color);
+    this.debug();
+  }
+
+  /* Player's method called into Player.update() */
   move(_dt, _inputs) {
     if (_inputs.keyRight) {
       this.x += 500 * _dt;
@@ -30,5 +36,8 @@ export default class Player {
     }
   }
 
-  debug() {}
+  debug() {
+    /* Use this function to display debug informations on screen */
+    drawText("Player X " + this.x.toFixed(2), 10, window.innerHeight - 20);
+  }
 }

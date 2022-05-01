@@ -1,28 +1,31 @@
 import Player from "./classes/Player.js";
-import { keyPressed, keyReleased, mouseMove, mouseClickDown, mouseClickRelease, preventContext, INPUTS } from "./inputs.js";
-const BOUNDARIES = CANVAS.getBoundingClientRect();
+import { initInputs, INPUTS } from "./inputs.js";
 
-const player = new Player(50, 50);
+const entities = [];
 
+/* Triggered once on start */
 export const LOADGAME = () => {
-  document.addEventListener("keydown", keyPressed, false);
-  document.addEventListener("keyup", keyReleased, false);
-  document.addEventListener(
-    "mousemove",
-    (e) => {
-      mouseMove(e, BOUNDARIES);
-    },
-    false
-  );
-  CANVAS.addEventListener("mousedown", mouseClickDown, false);
-  CANVAS.addEventListener("mouseup", mouseClickRelease, false);
-  CANVAS.addEventListener("contextmenu", preventContext, false);
+  CANVAS.width = window.innerWidth;
+  CANVAS.height = window.innerHeight;
+  initInputs(BOUNDARIES, CANVAS);
+
+  /* Add your objects inside entities */
+  entities.push(new Player(50, 50));
 };
 
+/* Update and draw loops are called on your maximum framerate */
 export const UPDATEGAME = (_dt) => {
-  player.update(_dt, INPUTS);
+  /* This loop updates all the entities */
+  for (let i = 0; i < entities.length; i++) {
+    entities[i].update(_dt, INPUTS);
+  }
 };
 
-export const DRAWGAME = () => {
-  player.draw();
+/* CTX is global here. For some reason you will have to make it local but you've got to pass it here */
+export const DRAWGAME = (/* _ctx */) => {
+  /* This loop draw all the entities */
+  for (let i = 0; i < entities.length; i++) {
+    entities[i].draw();
+  }
+  drawText("Let's start coding !", 50, 25);
 };
