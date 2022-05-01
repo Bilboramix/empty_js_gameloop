@@ -20,7 +20,14 @@ git clone https://github.com/Bilboramix/empty_js_gameloop.git
 
 3.  Code : Create classes objects, with their own update and draw function (Follow the player model), and push a new one into entities array.
 
-## Cool canvas tutorials here
+## Cool canvas and js tutorials here
 
 - Frank's laboratory : https://www.youtube.com/c/Frankslaboratory
 - Chris Courses : https://www.youtube.com/c/ChrisCourses
+- Coding Train : https://www.youtube.com/c/TheCodingTrain
+
+## Cool dependancies to play with
+
+- Multiplayer handling : https://github.com/geckosio/geckos.io
+- Physics calculations : https://brm.io/matter-js/
+- Perlin noise and random generation : https://p5js.org/
