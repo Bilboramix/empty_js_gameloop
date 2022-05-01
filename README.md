@@ -30,4 +30,5 @@ git clone https://github.com/Bilboramix/empty_js_gameloop.git
 
 - Multiplayer handling : https://github.com/geckosio/geckos.io
 - Physics calculations : https://brm.io/matter-js/
-- Perlin noise and random generation : https://p5js.org/
+- Perlin noise : https://p5js.org/
+- Random generation : https://chancejs.com/
