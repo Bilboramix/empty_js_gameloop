@@ -4,70 +4,92 @@ export const INPUTS = {
   mouseY: 0,
   mouseClick1: false,
   mouseClick2: false,
-  keyRight: false,
-  keyLeft: false,
-  keyUp: false,
-  keyDown: false,
-  keyDash: false,
-  keyLoot: false,
-  keyAbility: false,
-  keyUltimate: false,
+  keyD: false,
+  keyA: false,
+  keyW: false,
+  keyS: false,
+  keyLShift: false,
+  keyE: false,
+  keyQ: false,
+  keySpace: false,
+};
+
+/* The resize event listener is here to make canvas responsive */
+/* Note : all inputs event listeners can be placed on canvas to avoid conflict with a webpage, it's making them triggering on focus only */
+export const initInputs = (_boundaries, _canvas) => {
+  window.addEventListener("resize", (e) => {
+    _canvas.width = window.innerWidth;
+    _canvas.height = window.innerHeight;
+  });
+  document.addEventListener(
+    "mousemove",
+    (e) => {
+      mouseTrack(e, _boundaries);
+    },
+    false
+  );
+  document.addEventListener("keydown", keyPressed, false);
+  document.addEventListener("keyup", keyReleased, false);
+  _canvas.addEventListener("mousedown", mouseClickDown, false);
+  _canvas.addEventListener("mouseup", mouseClickRelease, false);
+  _canvas.addEventListener("contextmenu", preventContext, false);
 };
 
 /* Keyboard : Setting the state of the inputs depending of keycode to avoid QWERTY/AZERTY/etc... conflicts */
+/* Controls have to be handle with US standard keycode */
 const keyPressed = (e) => {
   e.preventDefault();
   if (e.code === "KeyD") {
-    INPUTS.keyRight = true;
+    INPUTS.keyD = true;
   }
   if (e.code === "KeyA") {
-    INPUTS.keyLeft = true;
+    INPUTS.keyA = true;
   }
   if (e.code === "KeyW") {
-    INPUTS.keyUp = true;
+    INPUTS.keyW = true;
   }
   if (e.code === "KeyS") {
-    INPUTS.keyDown = true;
+    INPUTS.keyS = true;
   }
   if (e.code === "ShiftLeft") {
-    INPUTS.keyDash = true;
+    INPUTS.keyLShift = true;
   }
   if (e.code === "KeyE") {
-    INPUTS.keyLoot = true;
+    INPUTS.keyE = true;
   }
-  if (e.code === "KeyQ") {
-    INPUTS.keyAbility = true;
+  if (e.code === "keyQ") {
+    INPUTS.keyQ = true;
   }
   if (e.code === "Space") {
-    INPUTS.keyUltimate = true;
+    INPUTS.keySpace = true;
   }
 };
 
 const keyReleased = (e) => {
   e.preventDefault();
   if (e.code === "KeyD") {
-    INPUTS.keyRight = false;
+    INPUTS.keyD = false;
   }
   if (e.code === "KeyA") {
-    INPUTS.keyLeft = false;
+    INPUTS.keyA = false;
   }
   if (e.code === "KeyW") {
-    INPUTS.keyUp = false;
+    INPUTS.keyW = false;
   }
   if (e.code === "KeyS") {
-    INPUTS.keyDown = false;
+    INPUTS.keyS = false;
   }
   if (e.code === "ShiftLeft") {
-    INPUTS.keyDash = false;
+    INPUTS.keyLShift = false;
   }
   if (e.code === "KeyE") {
-    INPUTS.keyLoot = false;
+    INPUTS.keyE = false;
   }
-  if (e.code === "KeyQ") {
-    INPUTS.keyAbility = false;
+  if (e.code === "keyQ") {
+    INPUTS.keyQ = false;
   }
   if (e.code === "Space") {
-    INPUTS.keyUltimate = false;
+    INPUTS.keySpace = false;
   }
 };
 
@@ -96,36 +118,14 @@ const mouseClickRelease = (e) => {
     INPUTS.mouseClick2 = false;
   }
   if (e.buttons === 1) {
-    INPUTS.mouseClick1 = true;
+    INPUTS.mouseClick1 = false;
   }
   if (e.buttons === 2) {
-    INPUTS.mouseClick2 = true;
+    INPUTS.mouseClick2 = false;
   }
 };
 
 /* To prevent opening of context menu for right click, on the canvas */
 const preventContext = (e) => {
   e.preventDefault();
-};
-/* The resize event listener is here to make canvas responsive */
-/* Note : all inputs event listeners can be placed on canvas to avoid conflict with a webpage, it's making them triggering on focus only */
-export const initInputs = (_boundaries, _canvas) => {
-  window.addEventListener("resize", (e) => {
-    console.log("resize !");
-    _canvas.width = window.innerWidth;
-    _canvas.height = window.innerHeight;
-  });
-  document.addEventListener(
-    "mousemove",
-    (e) => {
-      console.log("mouseMove !");
-      mouseTrack(e, _boundaries);
-    },
-    false
-  );
-  document.addEventListener("keydown", keyPressed, false);
-  document.addEventListener("keyup", keyReleased, false);
-  _canvas.addEventListener("mousedown", mouseClickDown, false);
-  _canvas.addEventListener("mouseup", mouseClickRelease, false);
-  _canvas.addEventListener("contextmenu", preventContext, false);
 };

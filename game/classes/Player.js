@@ -22,16 +22,16 @@ export default class Player {
 
   /* Player's method called into Player.update() */
   move(_dt, _inputs) {
-    if (_inputs.keyRight) {
+    if (_inputs.keyD) {
       this.x += 500 * _dt;
     }
-    if (_inputs.keyLeft) {
+    if (_inputs.keyA) {
       this.x -= 500 * _dt;
     }
-    if (_inputs.keyDown) {
+    if (_inputs.keyS) {
       this.y += 500 * _dt;
     }
-    if (_inputs.keyUp) {
+    if (_inputs.keyW) {
       this.y -= 500 * _dt;
     }
   }
