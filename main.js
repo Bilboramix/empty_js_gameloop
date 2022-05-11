@@ -1,4 +1,4 @@
-import { LOADGAME, UPDATEGAME, DRAWGAME } from "./game/gameloop.js";
+import { LOADGAME, UPDATEGAME, DRAWGAME } from "./game/core/gameloop.js";
 
 /*
   - If you're using this in a React environment, you should run this inside an useEffect hook.

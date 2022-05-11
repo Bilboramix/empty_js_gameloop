@@ -1,5 +1,5 @@
 /* This file can be used as a global lib to manipulate canvas's methods that will be used in the gameloop without importation */
-/* Note : if you're planning to use this in a front-end framework, you should export all of this with ES6 modules. */
+/* Import can be needed if you decide to implement the game on another web project */
 
 const CANVAS = document.getElementById("canvas");
 const CTX = CANVAS.getContext("2d");
