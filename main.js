@@ -1,36 +1,22 @@
-import { LOADGAME, UPDATEGAME, DRAWGAME } from "./game/core/gameloop.js";
+import Game from "./game/core/Game.js";
 
-/*
-  - If you're using this in a React environment, you should run this inside an useEffect hook.
-  - The requestAnimationFrame() method is running the loop on your max screen framerate.
-  - Delta time (dt), is time elapsed since last frame and is needed if you need accuracy between computers, for all your movement calculations
+window.addEventListener("load", () => {
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-    1 * dt = 1 per second 
-    1/dt = your framerate
-*/
+  const boundaries = canvas.getBoundingClientRect();
+  const game = new Game(canvas, boundaries);
+  let lastUpdate = 0;
 
-let lastUpdate = 0;
-
-/* 
-This is the main gameloop, you should not add game's behavior here.
-*/
-const run = (time) => {
-  const dt = (time - lastUpdate) / 1000;
-  lastUpdate = time;
-  UPDATEGAME(dt);
-  CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-  DRAWGAME();
-  requestAnimationFrame(run);
-};
-
-/*
-This is the starting function for the loop
-*/
-const init = () => {
-  cancelAnimationFrame(run);
-  console.log("Init 01");
-  LOADGAME();
-  requestAnimationFrame(run);
-};
-
-init();
+  const run = (time) => {
+    const dt = (time - lastUpdate) / 1000;
+    lastUpdate = time;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game.update(dt);
+    game.draw(ctx);
+    requestAnimationFrame(run);
+  };
+  run();
+});

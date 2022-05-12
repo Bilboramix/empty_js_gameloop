@@ -1,49 +1,45 @@
 /* This file can be used as a global lib to manipulate canvas's methods that will be used in the gameloop without importation */
 /* Import can be needed if you decide to implement the game on another web project */
 
-const CANVAS = document.getElementById("canvas");
-const CTX = CANVAS.getContext("2d");
-const BOUNDARIES = CANVAS.getBoundingClientRect();
-
-const drawRectangle = (_x, _y, _width, _height, _color) => {
-  CTX.beginPath();
-  CTX.rect(_x, _y, _width, _height);
-  CTX.fillStyle = _color;
-  CTX.fill();
-  CTX.closePath();
+const drawRectangle = (_ctx, _x, _y, _width, _height, _color) => {
+  _ctx.beginPath();
+  _ctx.rect(_x, _y, _width, _height);
+  _ctx.fillStyle = _color;
+  _ctx.fill();
+  _ctx.closePath();
 };
 
-const drawCircle = (_x, _y, _r, _color) => {
-  CTX.beginPath();
-  CTX.arc(_x, _y, _r, 0, 2 * Math.PI);
-  CTX.fillStyle = _color;
-  CTX.fill();
-  CTX.closePath();
+const drawCircle = (_ctx, _x, _y, _r, _color) => {
+  _ctx.beginPath();
+  _ctx.arc(_x, _y, _r, 0, 2 * Math.PI);
+  _ctx.fillStyle = _color;
+  _ctx.fill();
+  _ctx.closePath();
 };
 
-const drawText = (_txt, _x, _y, _color, _fontProperties) => {
+const drawText = (_ctx, _txt, _x, _y, _color, _fontProperties) => {
   if (_color) {
-    CTX.fillStyle = _color;
+    _ctx.fillStyle = _color;
   } else {
-    CTX.fillStyle = "Black";
+    _ctx.fillStyle = "Black";
   }
   if (_fontProperties) {
-    CTX.font = _fontProperties;
+    _ctx.font = _fontProperties;
   } else {
-    CTX.font = "normal 14pt Arial";
+    _ctx.font = "normal 14pt Arial";
   }
-  CTX.fillText(_txt, _x, _y);
+  _ctx.fillText(_txt, _x, _y);
 };
 
-const drawLine = (_xa, _ya, _xb, _yb, _color) => {
-  CTX.beginPath();
+const drawLine = (_ctx, _xa, _ya, _xb, _yb, _color) => {
+  _ctx.beginPath();
   if (_color) {
-    CTX.strokeStyle = _color;
+    _ctx.strokeStyle = _color;
   } else {
-    CTX.strokeStyle = "Black";
+    _ctx.strokeStyle = "Black";
   }
-  CTX.moveTo(_xa, _ya);
-  CTX.lineTo(_xb, _yb);
-  CTX.stroke();
-  CTX.closePath();
+  _ctx.moveTo(_xa, _ya);
+  _ctx.lineTo(_xb, _yb);
+  _ctx.stroke();
+  _ctx.closePath();
 };

@@ -1,26 +1,20 @@
 import Entity from "./Entity.js";
 export default class Player extends Entity {
-  constructor(_x, _y) {
+  constructor(_game, _x, _y) {
     super(_x, _y);
     this.width = 50;
     this.height = 50;
     this.color = "#ff0000";
   }
 
-  /* 
-  Entities have their own update and draw methods to be able to loop on them
-  You can create some specific behaviors with an Entity class and inheritance 
-  */
   update(_dt, _inputs) {
     this.move(_dt, _inputs);
   }
 
-  draw() {
-    drawRectangle(this.x, this.y, this.width, this.height, this.color);
-    this.debug();
+  draw(_ctx) {
+    drawRectangle(_ctx, this.x, this.y, this.width, this.height, this.color);
+    this.debug(_ctx);
   }
-
-  /* Player's method called into Player.update() */
   move(_dt, _inputs) {
     if (_inputs.keyD) {
       this.x += 500 * _dt;
@@ -36,8 +30,7 @@ export default class Player extends Entity {
     }
   }
 
-  debug() {
-    /* Use this function to display debug informations on screen */
-    drawText("Player X " + this.x.toFixed(2), 10, window.innerHeight - 20);
+  debug(_ctx) {
+    drawText(_ctx, "Player X " + this.x.toFixed(2), 10, window.innerHeight - 20);
   }
 }
