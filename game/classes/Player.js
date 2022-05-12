@@ -12,9 +12,10 @@ export default class Player extends Entity {
   }
 
   draw(_ctx) {
-    drawRectangle(_ctx, this.x, this.y, this.width, this.height, this.color);
+    drawRectangle(_ctx, this);
     this.debug(_ctx);
   }
+
   move(_dt, _inputs) {
     if (_inputs.keyD) {
       this.x += 500 * _dt;

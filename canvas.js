@@ -1,18 +1,18 @@
 /* This file can be used as a global lib to manipulate canvas's methods that will be used in the gameloop without importation */
 /* Import can be needed if you decide to implement the game on another web project */
 
-const drawRectangle = (_ctx, _x, _y, _width, _height, _color) => {
+const drawRectangle = (_ctx, _squareProps) => {
   _ctx.beginPath();
-  _ctx.rect(_x, _y, _width, _height);
-  _ctx.fillStyle = _color;
+  _ctx.rect(_squareProps.x, _squareProps.y, _squareProps.width, _squareProps.height);
+  _ctx.fillStyle = _squareProps.color;
   _ctx.fill();
   _ctx.closePath();
 };
 
-const drawCircle = (_ctx, _x, _y, _r, _color) => {
+const drawCircle = (_ctx, _circleProps) => {
   _ctx.beginPath();
-  _ctx.arc(_x, _y, _r, 0, 2 * Math.PI);
-  _ctx.fillStyle = _color;
+  _ctx.arc(_circleProps.x, _circleProps.y, _circleProps.r, 0, 2 * Math.PI);
+  _ctx.fillStyle = _circleProps.color;
   _ctx.fill();
   _ctx.closePath();
 };
