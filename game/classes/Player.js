@@ -1,7 +1,7 @@
-export default class Player {
+import Entity from "./Entity.js";
+export default class Player extends Entity {
   constructor(_x, _y) {
-    this.x = _x;
-    this.y = _y;
+    super(_x, _y);
     this.width = 50;
     this.height = 50;
     this.color = "#ff0000";
